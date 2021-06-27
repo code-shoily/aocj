@@ -1,5 +1,5 @@
-# aocj
-Solving advent of code with Java [2015 - 2020]
+# aocj - Advent of Code in Java
+Solving [advent of code](https://adventofcode.com) with Java [2015 - 2020]
 
 ## 2015
 
