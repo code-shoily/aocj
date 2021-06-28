@@ -1,6 +1,10 @@
 package com.mafinar.aocj.year_2020;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.mafinar.aocj.utils.Solution;
 
@@ -13,11 +17,11 @@ public class Day01 implements Solution {
 
     @Override
     public String solvePart1() {
-        for (var i = 0; i < data.length; i++) {
-            for (var j = 0; j < data.length; j++) {
-                if (i != j && data[i] + data[j] == 2020) {
-                    return String.valueOf(data[i] * data[j]);
-                }
+        Set<Integer> expenses = Arrays.stream(data).boxed().collect(Collectors.toSet());
+        for (var expense_1 : data) {
+            var expense_2 = 2020 - expense_1;
+            if (expenses.contains(expense_2)) {
+                return String.valueOf(expense_1 * expense_2);
             }
         }
         return null;
@@ -25,12 +29,12 @@ public class Day01 implements Solution {
 
     @Override
     public String solvePart2() {
-        for (var i = 0; i < data.length; i++) {
-            for (var j = 0; j < data.length; j++) {
-                for (var k = 0; k < data.length; k++) {
-                    if (i != j && j != k && data[i] + data[j] + data[k] == 2020) {
-                        return String.valueOf(data[i] * data[j] * data[k]);
-                    }
+        Set<Integer> expenses = Arrays.stream(data).boxed().collect(Collectors.toSet());
+        for (var expense_1 : data) {
+            for (var expense_2 : data) {
+                var expense_3 = 2020 - (expense_1 + expense_2);
+                if (expenses.contains(expense_3)) {
+                    return String.valueOf(expense_1 * expense_2 * expense_3);
                 }
             }
         }
