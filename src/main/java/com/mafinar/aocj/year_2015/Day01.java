@@ -38,11 +38,4 @@ public class Day01 {
     private char[] processInput(String input) {
         return input.toCharArray();
     }
-
-    public static void main(String[] args) throws IOException {
-        var day01 = new Day01(new InputReader(2015, 1).readFromFile());
-
-        System.out.println(day01.solvePart1());
-        System.out.println(day01.solvePart2());
-    }
 }
