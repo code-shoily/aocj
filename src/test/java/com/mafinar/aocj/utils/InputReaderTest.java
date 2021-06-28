@@ -17,7 +17,7 @@ class InputReaderTest {
     @DisplayName("getFileName should return the file name in proper format")
     public void testGetFileName(int year, int day, String expected) {
         var inputReader = new InputReader(year, day);
-        assertEquals(inputReader.getFileName(), expected);
+        assertEquals(expected, inputReader.getFileName());
     }
 
     @ParameterizedTest
@@ -45,7 +45,7 @@ class InputReaderTest {
     public void testReadsRightFile() throws IOException {
         var inputReader = new InputReader(2015, 1, "test");
         String content = inputReader.readFromFile();
-        assertEquals(content, "(((())))");
+        assertEquals("(((())))", content);
     }
 
     static Stream<Arguments> validResourceInfo() {
