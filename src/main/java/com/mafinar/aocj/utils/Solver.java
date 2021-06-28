@@ -15,21 +15,19 @@ public class Solver {
     }
 
     public List<String> getContent() throws IOException {
-        switch (this.inputType) {
-            case SINGLE_LINE:
+        return switch (this.inputType) {
+            case SINGLE_LINE -> {
                 var content = new InputReader(year, day).readFromFile();
-                return List.of(new String[] {content});
-            case MULTI_LINE:
-                return new InputReader(year, day).readLinesFromFile();
-            default:
-                return null;
-        }
+                yield List.of(new String[]{content});
+            }
+            case MULTI_LINE -> new InputReader(year, day).readLinesFromFile();
+        };
     }
 
     public void solve(Solution solution) {
         String solutionPart1 = solution.solvePart1();
         String solutionPart2 = solution.solvePart2();
 
-        System.out.printf("Part 1: %s\tPart 2: %s", solutionPart1, solutionPart2);
+        System.out.printf("Part 1: %s\t\tPart 2: %s", solutionPart1, solutionPart2);
     }
 }
