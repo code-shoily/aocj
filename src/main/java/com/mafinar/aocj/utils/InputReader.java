@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputReader {
     private int year;
@@ -42,5 +44,16 @@ public class InputReader {
 
     private static boolean isInvalidDateParams(int year, int day) {
         return year > 2020 || year < 2015 || day > 25 || day < 1;
+    }
+
+    public List<String> readLinesFromFile() throws IOException {
+        var resource = getClass().getClassLoader().getResourceAsStream(getFileName());
+
+        try (resource) {
+            if (resource != null)
+                return new BufferedReader(
+                        new InputStreamReader(resource, StandardCharsets.UTF_8)).lines().collect(Collectors.toList());
+        }
+        throw new NullPointerException("Input resource not found.");
     }
 }
