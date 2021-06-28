@@ -1,5 +1,8 @@
 package com.mafinar.aocj.year_2015;
 
+import java.io.IOException;
+
+import com.mafinar.aocj.utils.InputReader;
 import com.mafinar.aocj.utils.Solution;
 
 public class Day01 implements Solution {
@@ -35,5 +38,12 @@ public class Day01 implements Solution {
 
     private char[] processInput(String input) {
         return input.toCharArray();
+    }
+
+    public static void main(String[] args) throws IOException {
+        var inputReader = new InputReader(2015, 1);
+        var today = new Day01(inputReader.readFromFile());
+        System.out.printf("Solve 1: %s\n", today.solvePart1());
+        System.out.printf("Solve 2: %s\n", today.solvePart2());
     }
 }
